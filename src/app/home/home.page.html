@@ -1,20 +1,88 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
+<ion-header>
+  <app-header [pagename]="'Bus Booking'">
+    <ion-back-button [text]="" icon="arrow-back"></ion-back-button>
+  </app-header>
+  <ion-toolbar color="primary">
     <ion-title>
-      Blank
+      <P><strong>Hello</strong>
+        <br>
+      <span>Seach 680 Bus For your Journey</span>
+      </P>
     </ion-title>
+    <div>
+      <ion-searchbar showCancelButton="focus" cancelButtonText="Custom Cancel"></ion-searchbar>
+    </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+  <!-- <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>
+        <P><strong>Hello</strong>
+          <br>
+        <span>Seach 680 Bus For your Journey</span>
+        </P>
+      </ion-title>
+      <div>
+        <ion-searchbar showCancelButton="focus" cancelButtonText="Custom Cancel"></ion-searchbar>
+      </div>
     </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  </ion-header> -->
+  <div>
+    <img src="../../assets/images/bus.png" alt="">
   </div>
+
+  <div>
+    <ion-card>
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col size-lg="11" size-md="11" size-sm="10" size-sm="10" size='10' class="route">
+              <ion-item>
+                <ion-label color="primary" position="stacked">FROM</ion-label>
+                <ion-input #start  (ionChange)="updatestartingPlace($event)" type="text" [value]="startingPlace"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label color="primary" position="stacked">TO</ion-label>
+                <ion-input #end  (ionChange)="updateEndingPlace($event)" type="text"[value]="endingPlace"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col size-lg="1" size-md="1" size-sm="2" size-sm="2" size='2' class="route-swap">
+              <ion-icon color="primary" button name="swap-vertical-outline" (click)="swapPlace()"></ion-icon>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-item-divider>
+      <ion-grid  class="ion-no-padding">
+        <ion-row>
+          <ion-col size='6' class="ion-no-padding dep-sec">
+            <ion-item lines="none" button (click)="opendate()">
+              <ion-label color="primary" position="stacked">DEPARTURE DATE</ion-label>
+              <ion-datetime #datetime [(ngModel)]="currentDate" (ionChange)="updateMyDate($event)" displayFormat="DD MMM YYYY" min="2005"></ion-datetime>
+              <ion-icon slot="end" color="primary"  name="calendar-outline"></ion-icon>
+            </ion-item>
+          </ion-col>
+          <ion-col size='6' class="ion-no-padding">
+            <ion-item lines="none">
+              <ion-label color="primary">
+                <strong>
+                  <Span class="datespan" [ngClass]="isToday === true ? 'todayclass' : ''">TODAY</Span> | <Span button (click)="tommorow()" class="datespan">TOMORROW</Span>
+                </strong>
+              </ion-label>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item-divider>
+
+   <div class="ion-text-center">
+    <ion-button class="searchbus" shape="round" fill="solid" (click)="searchbus()">SEARCH BUSES</ion-button>
+   </div>
+
+  </div>
+
 </ion-content>

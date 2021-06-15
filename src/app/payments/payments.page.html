@@ -1,0 +1,45 @@
+<ion-header>
+  <app-header [pagename]="'Payments options'">
+    <ion-back-button [text]="" icon="arrow-back"></ion-back-button>
+  </app-header>
+</ion-header>
+
+<ion-content>
+  <div class="payment">
+    <ion-item lines="none">
+      <ion-label class="ion-text-left"> Select option to pay</ion-label>
+      <ion-label class="ion-text-right"> {{totalAmount | currency:'INR'}}</ion-label>
+    </ion-item>
+  </div>
+
+  <div class="payment-options">
+    <ion-list lines="full">
+      <ion-radio-group value="gpay" (ionChange)="changepaymentoption($event)">
+        <ion-item>
+          <ion-thumbnail slot="end">
+            <img src="../../assets/icon/gpay.png">
+          </ion-thumbnail>
+          <ion-label>Gpay</ion-label>
+          <ion-radio slot="start" value="gpay"></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-thumbnail slot="end">
+            <img src="../../assets/icon/paytm.png">
+          </ion-thumbnail>
+          <ion-label>Paytm</ion-label>
+          <ion-radio slot="start" value="paytm"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+  </div>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar  color="secondary">
+    <ion-title class="ion-text-center" (click)="gotosuccessPage()">
+      Pay {{totalAmount |currency:'INR'}} from {{paymentoption | titlecase}}
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>

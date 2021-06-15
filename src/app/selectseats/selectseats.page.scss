@@ -1,0 +1,117 @@
+ion-col .seats {
+  border: 1px solid #9c9b9b;
+  margin: 6px;
+  height: 66px;
+  border-radius: 12px;
+}
+
+.seats-count {
+  // display: table;
+  // margin: 45% auto;
+  // border-bottom: 4px solid #e0e0e0;
+}
+
+ion-row.ion-justify-content-center.seat-row {
+  border-bottom: 6px solid #e0e0e0;
+}
+
+.indicator1 {
+  display: flex;
+  ion-label {
+    font-size: 12px;
+    margin-left: 4px;
+    margin-top: 1px;
+  }
+  ion-icon {
+    color: #e0e0e0;
+  }
+}
+
+.indicator2 {
+  display: flex;
+  ion-label {
+    font-size: 12px;
+    margin-left: 4px;
+    margin-top: 1px;
+  }
+  ion-icon {
+    color: #37465a;
+  }
+}
+
+.indicator3 {
+  display: flex;
+  ion-label {
+    font-size: 12px;
+    margin-left: 4px;
+    margin-top: 1px;
+  }
+  ion-icon {
+    color: #f7c850;
+  }
+}
+
+.indicator4 {
+  display: flex;
+  ion-label {
+    font-size: 12px;
+    margin-left: 4px;
+    margin-top: 1px;
+  }
+  ion-icon {
+    color: #fd848a;
+  }
+}
+
+img.ste {
+  max-width: 100%;
+  position: relative;
+  border: 0;
+  right: 10%;
+}
+.seats-selected {
+  color: white;
+  background-color: #f7c951;
+  border: 1px solid #ffffff !important;
+  ion-row {
+    border-bottom: 6px solid #ffffff !important;
+  }
+}
+
+.seats-booked {
+  ion-row {
+    border-bottom: 6px solid #37465a;
+  }
+}
+
+.seats-reserved {
+  ion-row {
+    border-bottom: 6px solid #fd848a;
+  }
+}
+
+.seats-available {
+  ion-row {
+    border-bottom: 6px solid #e0e0e0;
+  }
+}
+
+ion-footer{
+  ion-toolbar{
+    ion-label{
+      font-size: 10px;
+      color: white;
+      font-weight: bold;
+    }
+    p{
+      margin: 0px;
+      color: white;
+      font-weight: bold;
+    }
+  }
+}
+
+ion-button.proceedbtn{
+  color: white;
+  font-weight: bold;
+}

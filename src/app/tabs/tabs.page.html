@@ -1,0 +1,26 @@
+<ion-tabs (ionTabsDidChange)=gettabs($event)>
+
+  <ion-tab-bar slot="bottom" mode="md">
+    <ion-tab-button layout="label-hide" tab="home">
+      <ion-icon
+      [name]="tabname === 'home' ? 'home' : 'home-outline'"
+      [size]="tabname === 'home' ? 'large' : ''"></ion-icon>
+      <ion-label>Dashboard</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button layout="label-hide" tab="mybookings">
+      <ion-icon
+      [name]="tabname === 'mybookings' ? 'briefcase' : 'briefcase-outline'"
+      [size]="tabname === 'mybookings' ? 'large' : ''"></ion-icon>
+      <ion-label>Products</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button layout="label-hide" tab="myaccount">
+      <ion-icon
+      [name]="tabname === 'myaccount' ? 'person-circle' : 'person-circle-outline'" size="large"
+      [size]="tabname === 'myaccount' ? 'large' : ''"></ion-icon>
+      <ion-label>Add products</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+
+</ion-tabs>

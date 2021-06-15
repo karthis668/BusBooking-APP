@@ -1,0 +1,148 @@
+<ion-header>
+  <app-header [pagename]="'Select Seats'">
+    <ion-back-button [text]="" icon="arrow-back"></ion-back-button>
+  </app-header>
+</ion-header>
+
+<ion-content>
+  <ion-header>
+    <ion-toolbar class="places">
+      <ion-buttons slot="secondary">
+        <ion-button>
+          <ion-label class="ion-text-right">
+            <p><Strong>
+              {{travelsDetails.price | currency:'INR'}}
+            </Strong><br>
+              <span>{{travelsDetails.startingtime}}</span>
+            </p>
+          </ion-label>
+        </ion-button>
+      </ion-buttons>
+      <ion-title>
+        <p color="primary">
+          <strong >{{travelsDetails.name}}</strong>
+          <br>
+          <span class="date">
+            <strong >28-May</strong>
+          </span>
+        </p>
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <div>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="3">
+          <div class="indicator1">
+            <ion-icon name="square"></ion-icon>
+            <ion-label>
+              Avalibale
+            </ion-label>
+          </div>
+        </ion-col>
+        <ion-col size="3">
+          <div class="indicator2">
+            <ion-icon name="square"></ion-icon>
+            <ion-label>
+              Booked
+            </ion-label>
+          </div>
+        </ion-col>
+        <ion-col size="3">
+          <div class="indicator3">
+            <ion-icon name="square"></ion-icon>
+            <ion-label>
+              Selected
+            </ion-label>
+          </div>
+        </ion-col>
+        <ion-col size="3">
+          <div class="indicator4">
+            <ion-icon name="square"></ion-icon>
+            <ion-label>
+              Reserved
+            </ion-label>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div>
+    <ion-grid>
+      <ion-row class="ion-justify-content-center" size="6">
+          <ion-col size="6" offset="6" class="steering">
+            <ion-row class="ion-justify-content-center " size="6">
+                <ion-col offset="6" size="5" class="steering-inners">
+                  <img src="../../assets/icon/steering-wheel.png" class="ste" alt="">
+                </ion-col>
+            </ion-row>
+          </ion-col>
+          <!-- <ion-col size="4" class="seats">
+            <ion-label></ion-label>
+          </ion-col> -->
+      </ion-row>
+      <ion-row >
+        <ion-col>
+          <ion-row class="ion-justify-content-center" size="6" >
+            <ng-container>
+              <ion-col size="4"
+              *ngFor="let lseat of leftseats;let i = index"
+              class="seats ion-align-self-center" button
+              [ngClass]="{
+                'seats-selected' : lseat.selected === true,
+                'seats-available': lseat.status === 'available',
+                'seats-booked' : lseat.status === 'booked',
+                'seats-reserved' : lseat.status === 'reserved'
+              }"
+              (click)="onclickLeftSeat(i,lseat.id,lseat.status,lseat.selected)">
+                <ion-row class="ion-justify-content-center seat-row">{{isSeatselected[i]}}
+                  <h5>{{lseat.id}}</h5>
+                </ion-row>
+              </ion-col>
+            </ng-container>
+          </ion-row>
+        </ion-col>
+        <ion-col>
+          <ion-row class="ion-justify-content-center" size="6" >
+            <ng-container>
+              <ion-col size="4" *ngFor="let rseat of rightseats;let j = index"
+              [ngClass]="{
+                'seats-selected' : rseat.selected === true,
+                'seats-available': rseat.status === 'available',
+                'seats-booked' : rseat.status === 'booked',
+                'seats-reserved' : rseat.status === 'reserved'
+              }"
+              class="seats ion-align-self-center" button
+              (click)="onclickRightSeat(j,rseat.id,rseat.status,rseat.selected)">
+                <ion-row class="ion-justify-content-center seat-row">{{isSeatselected[j]}}
+                  <h5>{{rseat.id}}</h5>
+                </ion-row>
+              </ion-col>
+            </ng-container>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="secondary">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="4">
+          <ion-label>Selected Seats</ion-label>
+          <p>{{seatCount}}</p>
+        </ion-col>
+        <ion-col size="4">
+          <ion-label>Book For</ion-label>
+          <p>{{total | currency:'INR'}}</p>
+        </ion-col>
+        <ion-col size="4">
+          <ion-button (click)="proceedTopayment()" fill="clear" class="proceedbtn">Proceed</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>
