@@ -221,6 +221,12 @@ export class BusService {
   return this.seats.value;
   }
 
+  claerseats() {
+    this.seatItemCount.next(0);
+    this.seats.next(null);
+
+  }
+
   getseatCount() {
     return this.seatItemCount.value;
   }
