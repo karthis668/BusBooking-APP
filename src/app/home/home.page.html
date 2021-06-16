@@ -70,7 +70,7 @@
             <ion-item lines="none">
               <ion-label color="primary">
                 <strong>
-                  <Span class="datespan" [ngClass]="isToday === true ? 'todayclass' : ''">TODAY</Span> | <Span button (click)="tommorow()" class="datespan">TOMORROW</Span>
+                  <Span class="datespan" button (click)="todayfn()" [ngClass]="isToday === true ? 'todayclass' : ''">TODAY</Span> | <Span button [ngClass]="isTomorrow === true ? 'tomorrowclass' : ''" (click)="tommorow()" class="datespan">TOMORROW</Span>
                 </strong>
               </ion-label>
             </ion-item>

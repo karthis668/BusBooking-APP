@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import * as moment from 'moment';
+import moment from 'moment';
 
 
 
@@ -15,6 +15,7 @@ export class HomePage {
   @ViewChild('end') end;
   currentDate ;
   isToday = false;
+  isTomorrow= false;
   today: any;
   startingPlace = 'Bangaluru';
   endingPlace = 'Chennai';
@@ -27,6 +28,9 @@ export class HomePage {
     if(this.today === this.currentDate){
       this.isToday = true;
     }
+    else{
+      this.isToday = false;
+    }
     console.log(this.today);
   }
 
@@ -36,6 +40,14 @@ export class HomePage {
 
   updateMyDate(ev: any){
     console.log(moment(ev.detail.value).format('YYYY-MM-DD'));
+    console.log(this.currentDate);
+    this.currentDate = moment(this.currentDate).format('YYYY-MM-DD');
+    if(this.today === this.currentDate){
+      this.isToday = true;
+    }
+    else{
+      this.isToday = false;
+    }
   }
 
   swapPlace(){
@@ -61,7 +73,29 @@ export class HomePage {
 
   tommorow(){
     const todayMoment = moment();
-    const tomorrowMoment = todayMoment.clone().add(1,'days');
+    const tomorrow  = moment().add(1,'days');
+    this.currentDate = tomorrow;
+    if(tomorrow === this.currentDate){
+      this.isTomorrow = true;
+    }
+    else{
+      this.isTomorrow = false;
+    }
+    // const tomorrow = todayMoment.clone().add(1,'days');
+  }
+
+  todayfn(){
+    this.today= moment().format('YYYY-MM-DD');
+    this.currentDate =  this.today;
+
+    if(this.today === this.currentDate){
+      this.isToday = true;
+      this.isTomorrow = false;
+    }
+    else{
+      this.isToday = false;
+    }
+    // const tomorrow = todayMoment.clone().add(1,'days');
   }
 
 }
